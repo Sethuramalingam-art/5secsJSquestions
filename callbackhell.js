@@ -1,28 +1,46 @@
-//Destructuing 
+// callback hell
 
-var x = {
-  name1: "sethu",
-  address: {
-    place: "chennai",
-  },
-};
+//it is a example of callback hell.
 
-const {
-  name1,
-  address: { place },
-} = x;
-console.log(name1, place); //sethu, chennai
+function multiplyby2(num, cb) {
+  setTimeout(() => {
+    cb("notdefined", num * 2);
+  }, 400);
+}
 
-//when x is null while destructing it will throw an error so we need to change like before
+function multiply(num) {
+  multiplyby2(num, (error, result) => {
+    multiplyby2(result, (error, result1) => {
+      multiplyby2(result1, (error, result2) => {
+        console.log(result2);
+      });
+    });
+  });
+}
 
-var x1 = null;
+console.log(multiply(3)); // 24
 
-const {
-  name2,
-  address: { place1 },
-} = { ...x };
-console.log(name2, place1); // undefined, undefined
+// we need to resolve this using Promise
 
+//here we need to use promise so cb not required
 
+function multiplyby3(num) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("notdefined", num * 3);
+    }, 400);
+  });
+}
 
-// callbackhell
+// cb function returns promises so we need to get the promises
+function multiplyPromise(num) {
+  multiplyby3(num).then((result) => {
+    multiplyby3(result).then((result1) => {
+      multiplyby3(result1).then((result2) => {
+        console.log(result2);
+      });
+    });
+  });
+}
+
+console.log(multiplyPromise(3)); // 24
