@@ -2,7 +2,8 @@ typeof null
 'object'
 typeof undefined
 'undefined'
-
+[]===[] //false
+[1]===[1] // false
 null === null true
 null == null true
 
