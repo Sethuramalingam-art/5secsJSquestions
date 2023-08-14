@@ -1,3 +1,8 @@
+var promise1 = new Promise(()=>{})
+promise1.then().catch() // then is for resolve and catch is reject
+//we can use like this also
+promise1.then((result)=> {}, (err)=>{}) // first is for resolve, second is for reject
+
 typeof null
 'object'
 typeof undefined
