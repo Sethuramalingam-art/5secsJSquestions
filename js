@@ -132,3 +132,7 @@ console.log(obj4); // { a: 0, b: { c: 0 } }
 
 map() creates a new array from calling a function for every array element. 
 map() does not execute the function for empty elements. map() does not change the original array.
+
+filter() does not change the original array.  creates a new array
+
+push, shift, unshift, pop, reverse, splice, sort, copyWithin, fill  = alter the original array
