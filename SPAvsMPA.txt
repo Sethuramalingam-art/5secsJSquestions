@@ -1,1 +1,3 @@
 https://learnersbucket.com/examples/web/single-page-application-csr-vs-multi-page-application-ssr/
+
+https://learnersbucket.com/examples/frontend-system-design/what-to-expect-in-frontend-system-design/
