@@ -1,0 +1,1 @@
+PWA -> extends from Cache interface 
