@@ -3,3 +3,26 @@ Without using this we would need to track all the subscriptions individually.
 
 private destroy$ = new Subject<void>();
 takeUntil(this.destroy$)
+
+
+
+exhaustMap vs switchMap
+For example when you working with http requests, If you divide HTTP call to command and query:
+
+command: Post, Put, Delete (insert, update, delete)
+query: Get (select)
+the use-case for exhaustMap is: when you want to send a command to the backend, you have to wait until the request has been finished, because the requests are asynchronous, if you send another action with the same param, you may get unexpected results from the backend, imagine if you send 2 delete request, after deleting the object:
+
+one of them has a successful result
+another request with a failed result because there was no object to be deleted.
+so which message you will notify to the user?
+
+the object has been deleted?
+or fail to delete the object?
+second request will be drop by exhaustMap until the first one has been finished.
+
+on the other hand, if you want a user information with userId-1. you ask the server with get method and userId-1 as param, what happens if you had miss click on user-1 link and immediately you clicked on the user-2 link to get the user 2 information, the use-case for switchMap:
+
+with exhaustMap, you have to wait for request 1 to be completed, the data is useless for you, and another request must be fire.
+without exhaustMap, the data maybe not come in a sequence, maybe user-2 information comes first then user-1 data come, and fill your form with user-1 information.
+so this is a use-case for switchMap, it will drop the first request (get user 1) and replace the request with (get user 2). the backend also can drop the first request with cancelationToke to prevent unused query.
