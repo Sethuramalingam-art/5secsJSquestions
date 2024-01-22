@@ -1,0 +1,30 @@
+function x() {
+  let a = 10;
+  function y() {
+    //let a = 250;
+    console.log(a);
+  }
+  a = 500;
+  return y;
+}
+console.log(x);
+var z = x();
+console.log(z);
+z(); //inside 250 means 250 is result. outside 500 is there means 500 is result
+//  ---------------------------------------------------------------------------------------------
+
+let x = () => {
+  let y = 4;
+  return () => y; //anonyms function
+};
+console.log(x());
+console.log(x()()); // 4
+
+// -------------------------------------------------------------------
+
+const x = [1, 2, 3];
+const y = x.fill(); //[undefined, undefined, undefined]
+const z = x.fill(0); //[0, 0, 0]
+console.log(z);
+
+//------------------------------------------------------------------
