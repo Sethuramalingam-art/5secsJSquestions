@@ -1,3 +1,9 @@
+Non-null assertion operator: !
+You tells the TS compiler that the value of a variable is not null | undefined
+
+x! // x is not a null or undefined
+
+
 var promise1 = new Promise(()=>{})
 promise1.then().catch() // then is for resolve and catch is reject
 //we can use like this also
