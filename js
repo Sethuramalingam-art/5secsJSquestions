@@ -142,3 +142,15 @@ map() does not execute the function for empty elements. map() does not change th
 filter() does not change the original array.  creates a new array
 
 push, shift, unshift, pop, reverse, splice, sort, copyWithin, fill  = alter the original array
+
+
+[1,2,3]+[4,5]
+'1,2,34,5'
+
+[1,2,3].concat([4,5])
+(5) [1, 2, 3, 4, 5]
+
+[1,2,3].concat(4,5)
+(5) [1, 2, 3, 4, 5]
+
+
